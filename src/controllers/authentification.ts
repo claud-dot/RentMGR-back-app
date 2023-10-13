@@ -1,4 +1,4 @@
-import { authentication, random } from 'helpers';
+import { authentification, random } from './../helpers';
 import { createUser, getUserByEmail } from './../db/users';
 import express from 'express'
 
@@ -18,13 +18,13 @@ export const register = async (req: express.Request, res: express.Response) => {
       }
   
       const salt = random();
-      const user = await createUser({
+      await createUser({
         nom,
         prenom,
         email,
-        authentication: {
+        authentification: {
           salt,
-          password: authentication(salt, password),
+          password: authentification(salt, password),
         },
       });
   
@@ -33,7 +33,31 @@ export const register = async (req: express.Request, res: express.Response) => {
     } catch (error) {
       console.log(error);
       dataSend.status=400;
-      dataSend.message = error.message;
+      dataSend.message = error.message; 
     }
     res.send(dataSend);
+}
+
+export const login = async (req : express.Request , res : express.Response) => {
+    const dataSend : any = {};
+    try {
+        const { email , password } = req.body;
+        const user = await getUserByEmail(email);
+
+        if(!user){
+            throw new Error("Email utilisateur inexistant !");
+        }
+        const passwordHashed = authentification(user.authentification.salt, password); 
+        if (user.authentification.password !== passwordHashed) {
+            throw new Error("Mot de passe incorrect !");
+        }
+        dataSend.status = 200;
+        dataSend.data = user;
+    } catch (error) {
+        console.error("Erreur :", error);
+
+        dataSend.status = 400;
+        dataSend.error = error.message; 
+    }
+    res.json(dataSend); 
 }

@@ -5,6 +5,7 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { dbconfig } from './config/database.config';
+import router from './router';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbconfig.url);
@@ -33,9 +34,12 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+app.use('/', router());
+
 app.get('/' , (req : express.Request , res : express.Response)=>{
     res.send('Hello world !');
 })
+
 
 
 export default app;

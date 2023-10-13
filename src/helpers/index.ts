@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 
-const SECRET = 'RENT-MNGR';
+const SECRET = 'RENT_MGR';
 
-export const authentication = (salt: string, password: string): string => {
+export const authentification = (salt: string, password: string): string => {
   return crypto.createHmac('sha256', [salt, password].join('/')).update(SECRET).digest('hex');
 }
 
