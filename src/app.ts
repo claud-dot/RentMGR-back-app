@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import { dbconfig } from 'config/database.config';
+import { dbconfig } from './config/database.config';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbconfig.url);
