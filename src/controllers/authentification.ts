@@ -1,6 +1,6 @@
 import { authentification, random } from './../helpers';
 import { createUser, getUserByEmail } from './../db/users';
-import express from 'express'
+import express, { response } from 'express'
 
 export const register = async (req: express.Request, res: express.Response) => {
     const dataSend : any = {};
@@ -42,7 +42,7 @@ export const login = async (req : express.Request , res : express.Response) => {
     const dataSend : any = {};
     try {
         const { email , password } = req.body;
-        const user = await getUserByEmail(email);
+        const user = await getUserByEmail(email).select('+authentification.salt +authentification.password');
 
         if(!user){
             throw new Error("Email utilisateur inexistant !");
@@ -51,13 +51,19 @@ export const login = async (req : express.Request , res : express.Response) => {
         if (user.authentification.password !== passwordHashed) {
             throw new Error("Mot de passe incorrect !");
         }
+
+        const salt = random();
+        
+        user.authentification.sessionToken = authentification(salt , user.id.toString());
+        await user.save();
+        
+        res.cookie('RENT-AUTH',user.authentification.sessionToken);
         dataSend.status = 200;
         dataSend.data = user;
     } catch (error) {
         console.error("Erreur :", error);
-
         dataSend.status = 400;
         dataSend.error = error.message; 
-    }
-    res.json(dataSend); 
+      }
+      res.send(dataSend); 
 }
