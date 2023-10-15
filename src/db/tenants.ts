@@ -4,7 +4,6 @@ const TenantSchema = new mongoose.Schema({
     idProperty : { type : mongoose.Schema.Types.ObjectId , required : true },
     nom : { type : String , required : true },
     prenom : { type : String , required : true },
-    adresse_postale : { type : String , required : true },
     email : { type :String , required : true },
     telephone : { type :String , required : true }
 });

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+   body{
+    font-family: 'Arial', sans-serif;
+   }
+   .left-side p{
+      font-weight: 600;
+      margin-left: 6px;
+   }
+   p{
+    margin: 0;
+    font-size: 14px;
+   }
+
+   .containt-table{
+    background-color: #1c2450;
+   }
+
+   .containt-table table{
+    background-color: #fff;
+   }
+</style>
+<body>
+  <div class="containt-table">
+    <table
+        align="center"
+        border="0"
+        cellpadding="0"
+        cellspacing="0"
+        style="font-family: 'Arial', sans-serif;background-color: #fff;"
+        width="670">
+        <tbody>
+            <tr class="top-bar">
+                <td style="
+                    width: 100%;
+                    height: 40px;
+                    background-color: #444444;">
+                    <h2 style="color: #fff;margin: 0; text-align: center;font-size: 16px;">QUITTANCE DE LOYER</h2> 
+                </td>
+            </tr>
+            <tr class="sub-header">
+                <td class="little-title" style="
+                    width: 100%;
+                    height: 60px;">
+                    <h4 style="color: #252424;margin: 0; font-size: 14px; text-align: left;font-weight: 700;">Correspondant à la location du bien situé : ${bien_address}</h4> 
+                </td>
+            </tr>
+    
+            <tr>
+                <table
+                align="center"
+                border="0"
+                cellpadding="0"
+                cellspacing="0" 
+                width="670"  
+                style="padding-bottom: 50px;" 
+                >
+                    <tbody>
+                        <tr class="info-propio">
+                            <td style="
+                                width: 100%;
+                                height: auto;
+                                padding-bottom: 20px;">
+                                <h4 style="color: #252424;margin: 0; font-size: 14px; text-align: left;font-weight: 700;">Bailleur :</h4> 
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600;line-height: 20px;">${nom_proprio}</h3> 
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600; line-height: 20px">${address_proprio}</h3> 
+                            </td>
+                        </tr>    
+                        <tr>
+                            <td style="
+                            width: 100%;
+                            height: auto;">
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600;line-height: 20px;">Tél : ${tel_proprio}</h3> 
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600; line-height: 20px">E-mail : ${email_proprio}</h3> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </tr>
+    
+            <tr>
+                <table
+                    align="center"
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0" 
+                    width="670"   
+                >
+                    <tbody>
+                        <tr class="info-locataire">
+                            <td style="
+                                width: 100%;
+                                height: auto;
+                                padding-bottom: 20px;">
+                                <h4 style="color: #252424;margin: 0; font-size: 14px; text-align: left;font-weight: 700;">Locataire :</h4> 
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600;line-height: 20px;">${nom_locataire}</h3> 
+                                <h3 style="color: #252424;margin: 0; font-size: 13px; text-align: left;font-weight: 600; line-height: 20px">${bien_address}</h3> 
+                            </td>
+                        </tr>    
+                    </tbody>
+                </table>
+            </tr>
+    
+            <tr>
+                <table
+                  align="center"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0" 
+                  width="670"
+                >
+                  <tbody>
+                    <tr>
+                      <td style="
+                        width: 50%;
+                        height: 60px;">
+                      </td>
+                      <td style="
+                        width: 50%;
+                        vertical-align: top;
+                        height: auto;"
+                        width="100%">
+                        <div>
+                          <div class="left-side"  style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px; background-color: #d7d7d7;">
+                            <p>Date de quittance</p>
+                          </div> 
+                          <div style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-left: 2px;">
+                            <p>${date_quittance}</p>
+                          </div> 
+                        </div>
+                        <div>
+                          <div class="left-side"  style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px; background-color: #d7d7d7;">
+                            <p>Date de paiment</p>
+                          </div> 
+                          <div style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-left: 2px;">
+                            <p>${date_paiment}</p>
+                          </div> 
+                        </div>
+                        <div >
+                          <div class="left-side" style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px; background-color: #d7d7d7;">
+                            <p>Mois de location</p>
+                          </div> 
+                          <div style="width: 50%; float: left; border: 1px solid; box-sizing: border-box;padding-left: 2px;">
+                            <p>${date_location}</p>
+                          </div> 
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </tr>
+    
+            <tr>
+                <table
+                  align="center"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0" 
+                  width="670"
+                  style="padding-top: 20px;padding-bottom: 80px;"
+
+                >
+                  <tbody>
+                    <tr>
+                      <td>
+                        <!-- <div class="left-side" style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;background-color: #d7d7d7;">
+                          <p>Loyer hors charge</p>
+                        </div> -->
+                      </td>
+                      <td style="border: 1px;">
+                        <div class="left-side" style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;background-color: #d7d7d7;">
+                          <p>Objet de paiement</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="left-side" style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;background-color: #d7d7d7;">
+                          <p>Payement</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="left-side" style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;background-color: #d7d7d7;">
+                          <p>Loyer</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <!-- <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">${loyer_h_charge}</p>
+                        </div> -->
+                      </td>
+                      <td style="border: 1px;">
+                        <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">Loyer</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">Versement</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">${bien_loyer} £</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <!-- <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">Loyer</p>
+                        </div> -->
+                      </td>
+                      <td>
+                        <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">Net à Payer</p>
+                        </div>
+                      </td>
+                      <td>
+                        <!-- <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">${loyer_h_charge}</p>
+                        </div> -->
+                      </td>
+                      <td>
+                        <div style="width : 100% ;float: left; border: 1px solid; box-sizing: border-box;padding-right: 2px;">
+                          <p style="margin-left: 8px;">${bien_loyer} £</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </tr>
+
+            <tr>
+              <table
+                align="center"
+                border="0"
+                cellpadding="0"
+                cellspacing="0" 
+                width="670"
+              >
+              <tbody>
+                <tr>
+                  <td style="width: 50%;"></td>
+                  <td style="width: 50%;">
+                    <h5  style="text-align: right; font-style: italic;font-family: 'cursive';margin-right: 8px;">Rent Manager</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</body>
+</html>
