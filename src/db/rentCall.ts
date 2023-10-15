@@ -13,8 +13,8 @@ export const getRentCalls = (idTenant : string )=>{
     return RentCallModel.find({idTenant : tenant_id});
 }
 
-export const getRentCallsByProperty = (idProperty : string)=> {
-    const property_id = new mongoose.Types.ObjectId(idProperty);
-    return RentCallModel.find({idTenant : property_id});
+export const getRentCallsByProperty = (idLocataire : string)=> {
+    const location_id = new mongoose.Types.ObjectId(idLocataire);
+    return RentCallModel.find({idTenant : location_id});
 }
 export const createRentCall = (values : Record<string , any>) => new RentCallModel(values).save().then((rentCall)=> rentCall.toObject());

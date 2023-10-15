@@ -18,6 +18,19 @@ mongoose.connection.on('error',(error) => {
 
 const app = express();
 
+const allowedOrigins: string[] = ['http://localhost:4200', 'https://example.com', 'https://anotherdomain.com'];
+
+const corsOptions = {
+  origin: (origin: string | undefined, callback: (error: Error | null, allow: boolean) => void) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'), false);
+    }
+  },
+  credentials: true,
+};
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
     res.header("Access-Control-Allow-Credentials", 'true'); 
@@ -26,9 +39,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(cors({
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 
 app.use(compression());
 app.use(cookieParser());

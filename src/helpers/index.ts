@@ -40,9 +40,8 @@ export const generateHTML = async (fileName : string,data: Record<string, any>) 
         
       }
       
-      bodyHTML = bodyHTML.replace(replaceVariable, replaceValue);
+      bodyHTML = bodyHTML.replaceAll(replaceVariable, replaceValue);
     }
-    // console.log(bodyHTML);
   }
 
   return bodyHTML; 
@@ -55,13 +54,8 @@ export const getDatePayInfo = ()=>{
 
   const dateQuittance = startOfMonth(dateNow);
 
-  // Formattage de la date de quittance
   const dateQuittanceFormatee = format(dateQuittance, 'yyyy-MM-dd');
-
-  // Formattage de la date de paiement
   const datePaiementFormatee = format(datePaiementLoyer, 'yyyy-MM-dd');
-
-  // Calculer le mois de location
   const moisLocation = format(datePaiementLoyer, 'MMMM yyyy');
 
   return {

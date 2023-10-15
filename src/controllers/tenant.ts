@@ -22,11 +22,10 @@ export const getTenant = async (req : express.Request , res : express.Response) 
 
 export const addTenant = async (req : express.Request , res : express.Response) => {
     const dataSend : any = {};
-    try {
-        const idProperty : string = req.params.idProperty; 
-        const { nom , prenom , adresse_postale , email , telephone } = req.body;
+    try { 
+        const { idProperty , nom , prenom , email , telephone } = req.body;
         
-        if(!idProperty || !nom || !prenom || !adresse_postale || !email || !telephone){
+        if(!idProperty || !nom || !prenom || !email || !telephone){
             throw new Error("input required !");
         }
         const propertyExist = await getPropertyById(idProperty);
@@ -38,7 +37,6 @@ export const addTenant = async (req : express.Request , res : express.Response) 
             idProperty : idProperty,
             nom : nom,
             prenom : prenom,
-            adresse_postale : adresse_postale,
             email : email,
             telephone : telephone
         })

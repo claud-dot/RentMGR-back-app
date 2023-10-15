@@ -63,7 +63,7 @@ export const login = async (req : express.Request , res : express.Response) => {
     } catch (error) {
         console.error("Erreur :", error);
         dataSend.status = 400;
-        dataSend.error = error.message; 
+        dataSend.message = error.message; 
       }
       res.send(dataSend); 
 }
