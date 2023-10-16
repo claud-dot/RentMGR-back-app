@@ -57,11 +57,7 @@ export const login = async (req : express.Request , res : express.Response) => {
         user.authentification.sessionToken = authentification(salt , user.id.toString());
         await user.save();
         
-        res.cookie('RENT-AUTH',user.authentification.sessionToken , {
-          sameSite: "none", // Utilisation de "None" pour les cookies entre sites
-          secure: true, // Envoyer les cookies uniquement sur HTTPS
-          httpOnly: true}
-        );
+        res.cookie('RENT-AUTH',user.authentification.sessionToken);
         dataSend.status = 200;
         dataSend.data = user;
     } catch (error) {
