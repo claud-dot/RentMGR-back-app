@@ -7,7 +7,7 @@ export const isAuthentificated = async (req : express.Request , res : express.Re
     const dataSend : any = {}; 
     try {
         const sessionToken = req.cookies['RENT-AUTH'];
-        console.log(sessionToken , "Token");
+        console.log(req.cookies , "Token");
         
         if(!sessionToken){
             throw new Error("Session required , You must first login !");
