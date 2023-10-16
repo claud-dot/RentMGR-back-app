@@ -15,6 +15,23 @@ export const getAllProperty = async (req : express.Request , res : express.Respo
     res.send(dataSend);
 }
 
+export const getPropertyByID = async (req : express.Request , res : express.Response) => {
+    const dataSend : any = {};
+    try {
+        const idProperty   = req.params.idProperty;
+        const property = await getPropertyById(idProperty); 
+        if(!property){
+            throw new Error("Property don't exist !");
+        }
+        dataSend.status = 200;
+        dataSend.data = property;
+    } catch (error) {
+        dataSend.status = 400;
+        dataSend.message = error.message;
+    }
+    res.send(dataSend);
+}
+
 export const createProperties = async (req : express.Request , res : express.Response) => {
     const dataSend : any = {};
     try {

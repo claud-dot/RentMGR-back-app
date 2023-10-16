@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { TenantModel } from './tenants';
 
 const PropertySchema = new mongoose.Schema({
     idUser : { type : mongoose.Schema.Types.ObjectId , required : true },
@@ -17,4 +18,7 @@ export const getProperties = (idUser : string ) =>{
 export const getPropertyById = (idProperty : string ) => PropertyModel.findById(idProperty);
 export const createProperty = (values : Record<string , any>) => new PropertyModel(values).save().then((property)=> property.toObject());
 export const updatePropertyById = (idProperty : string , values : Record<string , any>)=> PropertyModel.findByIdAndUpdate(idProperty , values);
-export const deletePropertyById = (idProperty : string) =>PropertyModel.findByIdAndDelete(idProperty);
+export const deletePropertyById = async (idProperty : string) =>{
+    await TenantModel.deleteMany({idProperty : idProperty});
+    await PropertyModel.findByIdAndDelete(idProperty)
+}

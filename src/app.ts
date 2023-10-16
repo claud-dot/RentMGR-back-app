@@ -39,10 +39,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use(compression());
-app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use('/', router());

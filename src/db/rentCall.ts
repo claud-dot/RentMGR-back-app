@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
 const RentCallSchema = new mongoose.Schema({
-    idTenant : { type : mongoose.Types.ObjectId , require : true },
+    idUser : { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    idLocataire: { type: mongoose.Schema.Types.ObjectId, ref: 'Tenant' },
+    montant : { type : Number , required : true },
     date : { type : Date , required: true },
-    amount : { type : Number , required : true }
 })
 
 export const RentCallModel = mongoose.model('RentCall', RentCallSchema);
