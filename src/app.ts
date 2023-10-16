@@ -18,7 +18,7 @@ mongoose.connection.on('error',(error) => {
 
 const app = express();
 
-const allowedOrigins: string[] = ['http://localhost:4200', 'https://rentmanager14.netlify.app'];
+const allowedOrigins: string[] = ['http://localhost:4200', 'https://rentmanager14.netlify.app' , 'https://rent-mgr-front-app.vercel.app'];
 
 const corsOptions = {
   origin: (origin: string | undefined, callback: (error: Error | null, allow: boolean) => void) => {
@@ -29,6 +29,7 @@ const corsOptions = {
     }
   },
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(function (req, res, next) {
