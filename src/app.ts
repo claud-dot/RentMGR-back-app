@@ -18,16 +18,8 @@ mongoose.connection.on('error',(error) => {
 
 const app = express();
 
-const allowedOrigins: string[] = ['http://localhost:4200', 'https://rentmanager14.netlify.app' , 'https://rent-mgr-front-app.vercel.app'];
-
 const corsOptions = {
-  origin: (origin: string | undefined, callback: (error: Error | null, allow: boolean) => void) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'), false);
-    }
-  },
+  origin: "*",
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 };
