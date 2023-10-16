@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(cookieParser());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(compression());
 app.use(bodyParser.json());
