@@ -18,7 +18,7 @@ mongoose.connection.on('error',(error) => {
 
 const app = express();
 
-const allowedOrigins: string[] = ['http://localhost:4200', 'https://example.com', 'https://anotherdomain.com'];
+const allowedOrigins: string[] = ['http://localhost:4200', 'https://rentmanager14.netlify.app'];
 
 const corsOptions = {
   origin: (origin: string | undefined, callback: (error: Error | null, allow: boolean) => void) => {
