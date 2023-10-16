@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { dbconfig } from './config/database.config';
@@ -18,24 +17,20 @@ mongoose.connection.on('error',(error) => {
 
 const app = express();
 
-const corsOptions = {
-  origin: "*",
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
+const allowedOrigins: string[] = ['http://localhost:4200', 'https://rentmanager14.netlify.app' , 'https://rent-mgr-front-app.vercel.app'];
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", 'true'); 
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
+const corsOptions = {
+  origin: (origin: string | undefined, callback: (error: Error | null, allow: boolean) => void) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'), false);
+    }
+  }
+};
 
 app.use(cookieParser());
 app.use(cors(corsOptions));
-
-app.use(compression());
 app.use(bodyParser.json());
 
 app.use('/', router());
